@@ -5,7 +5,7 @@ import hamburger from "../assets/Hamburger.png";
 import add from "../assets/add.png";
 
 const TITLE_MAP: Record<string, string> = {
-  "/projects": "Projects",
+  "/": "Projects",
   "/materials": "Materials",
   "/tools": "Tools",
 };
@@ -14,7 +14,17 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  const title = TITLE_MAP[location.pathname] ?? "Craft Tracker";
+  const pathname = location.pathname.replace(/\/$/, "");
+  const title =
+    pathname === "" || pathname === "/"
+      ? "Projects"
+      : pathname.startsWith("/projects")
+      ? "Projects"
+      : pathname.startsWith("/materials")
+      ? "Materials"
+      : pathname.startsWith("/tools")
+      ? "Tools"
+      : "Craft Tracker";
 
   // Close on click
   useEffect(() => {

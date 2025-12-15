@@ -1,0 +1,46 @@
+.card {
+  border-radius: 10px;
+  padding: 16px;
+  background: #FFF;
+  margin: 16px auto;
+  width: min(900px, calc(100% - 24px));
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 0px 30px 10px 30px;
+    margin: 23px auto;
+  }
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__title {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: clamp(18px, 3.8vw, 24px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: clamp(14px, 3.2vw, 16px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.35;
+}

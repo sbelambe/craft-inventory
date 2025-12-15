@@ -1,0 +1,168 @@
+.card-section {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.information-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.image {
+  flex: 0 0 clamp(120px, 28vw, 180px);
+}
+
+@media (max-width: 520px) {
+  .card-section {
+    flex-direction: column;
+  }
+
+  .image {
+    flex: none;
+    width: 100%;
+  }
+}
+.image img {
+  width: 100%;
+  height: clamp(110px, 28vw, 160px);
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: clamp(110px, 28vw, 160px);
+  border-radius: 12px;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar-track {
+  flex: 1;
+  min-width: 120px;
+  height: 10px;
+  background-color: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #8a098c;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.progress-percent {
+  min-width: 44px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+
+.materials-list,
+.tools-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.materials-button,
+.tools-button {
+  padding: 6px 10px;
+  background-color: #974EC1;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  border-radius: 999px;
+  font-size: 14px;
+  border: 0;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.materials-button,
+.tools-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  .materials-button,
+  .tools-button {
+    white-space: normal; 
+  }
+}
+
+
+.materials-button:hover,
+.tools-button:hover {
+  filter: brightness(0.95);
+}
+
+.materials-button:active,
+.tools-button:active {
+  transform: scale(0.98);
+}
+
+.separator-line {
+  height: 1px;
+  background-color: #ccc;
+  margin: 15px 0;
+}
+
+.materials-used-section,
+.tools-used-section {
+  margin-top: 10px;
+}
+
+.materials-used-section > span,
+.tools-used-section > span {
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 520px) {
+  .icon-btn {
+    width: 44px;
+    height: 44px; 
+  }
+}
