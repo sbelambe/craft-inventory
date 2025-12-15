@@ -1,0 +1,128 @@
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    background: white;
+}
+
+.nav_title {
+    display: flex;
+    width: 232px;
+    height: 42px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+    font-family: "Playfair Display";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;line-height: normal;
+}
+
+.nav_icon {
+    width: 53px;
+    height: 43x;
+    border: 0;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.nav_add {
+    margin-left: auto;
+    width: 53px;
+    height: 43px;
+    border: 0;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+.nav_icon:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+/* Backdrop behind drawer */
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease;
+    z-index: 60;
+}
+.backdrop--show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Drawer */
+.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: min(78vw, 320px);
+    background: #F5E8FF;
+    transform: translateX(-105%);
+    transition: transform 180ms ease;
+    z-index: 70;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer--open {
+    transform: translateX(0);
+}
+
+.drawer_header {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.drawer_label {
+    font-weight: 600;
+}
+
+.drawer_links {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 6px;
+}
+
+.drawer_link {
+    padding: 10px 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #610099;
+    font-family: "Playfair Display";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.drawer_link:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+/* React Router active link */
+.drawer_link.active {
+    background: rgba(0,0,0,0.10);
+    font-weight: 600;
+}
