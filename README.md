@@ -51,3 +51,9 @@ npm install @prisma/client
 npx prisma init
 npx prisma migrate dev --name init
 ```
+
+8. To test with Ngrok
+```
+ngrok http 5173
+```
+Open the link provided on phone and then Add to Home Screen
