@@ -1,4 +1,26 @@
-.toolgroup_empty {
+.toolgroup__empty {
   color: #666;
   font-size: 14px;
+}
+
+.toolgroup__list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolgroup__item {
+  padding: 6px 10px;
+  background-color: #974EC1;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

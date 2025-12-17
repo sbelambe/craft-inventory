@@ -43,35 +43,28 @@ export interface BraceletMaterial extends BaseMaterial {
 
 export type Material = YarnMaterial | FabricMaterial | BraceletMaterial;
 
-export type ToolType = "crochetHook" | "knittingNeedle" | "generic";
+export type ToolCategoryId =
+  | "crochet"
+  | "knitting"
+  | "sewing"
+  | "embroidery"
+  | "painting"
+  | "soldering";
 
-export interface BaseTool {
-    id: ID;
-    type: ToolType;
-    dateBought: string;
-    imageUrl?: string;
+export interface Tool {
+  id: ID;
+  name: string;
+  categoryId: ToolCategoryId;
+  dateBought?: string;
+  notes?: string;
+  imageUrl?: string;
 }
 
-export interface CrochetHook extends BaseTool {
-    type: "crochetHook";
-    size: string;
-}
-
-export interface KnittingNeedle extends BaseTool {
-    type: "knittingNeedle";
-    size: string;
-    length: string;
-}
-
-export interface GenericTool extends BaseTool {
-    type: "generic";
-    category?: string;
-    description?: string;
-}
-
-export type Tool = CrochetHook | KnittingNeedle | GenericTool;
-
-export type ToolGroup =
-  | { kind: "crochetHook"; title: "Crochet Hooks"; tools: CrochetHook[] }
-  | { kind: "knittingNeedle"; title: "Knitting Needles"; tools: KnittingNeedle[] }
-  | { kind: "genericCategory"; title: string; tools: GenericTool[] };
+export const TOOL_CATEGORIES: { id: ToolCategoryId; label: string }[] = [
+  { id: "crochet", label: "Crochet" },
+  { id: "knitting", label: "Knitting" },
+  { id: "sewing", label: "Sewing" },
+  { id: "embroidery", label: "Embroidery" },
+  { id: "painting", label: "Painting" },
+  { id: "soldering", label: "Soldering" },
+];

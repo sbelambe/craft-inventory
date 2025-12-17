@@ -1,24 +1,37 @@
 import Card from "../ui/Card";
 import "./ToolGroupCard.css";
 
+type ToolItem = {
+  id: string;
+  name: string;
+};
+
 type Props = {
   title: string;
-  children: React.ReactNode;
+  tools: ToolItem[];
   headerRight?: React.ReactNode;
   emptyText?: string;
-  isEmpty?: boolean;
 };
 
 export default function ToolGroupCard({
   title,
-  children,
+  tools,
   headerRight,
   emptyText = "No tools yet.",
-  isEmpty = false,
 }: Props) {
   return (
     <Card title={title} headerRight={headerRight}>
-      {isEmpty ? <div className="toolgroup_empty">{emptyText}</div> : children}
+      {tools.length === 0 ? (
+        <div className="toolgroup__empty">{emptyText}</div>
+      ) : (
+        <ul className="toolgroup__list">
+          {tools.map((t) => (
+            <li key={t.id} className="toolgroup__item">
+              {t.name}
+            </li>
+          ))}
+        </ul>
+      )}
     </Card>
   );
 }

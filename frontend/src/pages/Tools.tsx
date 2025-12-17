@@ -1,63 +1,43 @@
 import "../styles/global.css";
 import ToolGroupCard from "../components/cards/ToolGroupCard";
-import ToolRow from "../components/cards/ToolRow";
+
+const TOOL_CATEGORIES = [
+  { id: "crochet", label: "Crochet" },
+  { id: "knitting", label: "Knitting" },
+  { id: "sewing", label: "Sewing" },
+  { id: "embroidery", label: "Embroidery" },
+  { id: "painting", label: "Painting" },
+  { id: "soldering", label: "Soldering" },
+] as const;
 
 export default function Tools() {
-  const crochetHook1 = {
-    id: "1",
-    type: "crochetHook" as const,
-    dateBought: "2023-10-01",
-    size: "4.5mm",
-  };
-  const crochetHook2 = {
-    id: "2",
-    type: "crochetHook" as const,
-    dateBought: "2022-05-15",
-    size: "2mm",
-  };
-  const crochetHook3 = {
-    id: "3",
-    type: "crochetHook" as const,
-    dateBought: "2021-08-20",
-    size: "8mm",
-  };
-  const knittingNeedle1 = {
-    id: "4",
-    type: "knittingNeedle" as const,
-    dateBought: "2020-11-11",
-    size: "8 US",
-    length: "16 inches",
-  };
-  const genericTool1 = {
-    id: "5",
-    type: "generic" as const,
-    dateBought: "2019-03-30",
-    description: "Measuring Tape",
-  };
+  const tools = [
+    { id: "1", name: "4.5mm Hook", categoryId: "crochet" },
+    { id: "2", name: "Stitch Markers", categoryId: "crochet" },
+    { id: "3", name: "Yarn Needle", categoryId: "crochet" },
 
-  const crochetHooks = [crochetHook1, crochetHook2, crochetHook3];
-  const knittingNeedles = [knittingNeedle1];
-  const genericTools = [genericTool1];
+    { id: "4", name: "Size 8 Needles (16in)", categoryId: "knitting" },
+
+    { id: "5", name: "Measuring Tape", categoryId: "sewing" },
+    { id: "6", name: "Fabric Scissors", categoryId: "sewing" },
+
+    { id: "7", name: "Gouache Paint", categoryId: "painting" },
+    { id: "8", name: "Round Brushes", categoryId: "painting" },
+  ];
 
   return (
     <div>
-      <ToolGroupCard title="Crochet Hooks">
-        {crochetHooks.map((t) => (
-          <ToolRow key={t.id} tool={t} />
-        ))}
-      </ToolGroupCard>
-
-      <ToolGroupCard title="Knitting Needles">
-        {knittingNeedles.map((t) => (
-          <ToolRow key={t.id} tool={t} />
-        ))}
-      </ToolGroupCard>
-
-      <ToolGroupCard title="Sewing">
-        {genericTools.map((t) => (
-          <ToolRow key={t.id} tool={t} />
-        ))}
-      </ToolGroupCard>
+      {TOOL_CATEGORIES.map((cat) => {
+        const toolsInCategory = tools.filter((t) => t.categoryId === cat.id);
+        return (
+          <ToolGroupCard
+            key={cat.id}
+            title={cat.label}
+            tools={toolsInCategory}
+            emptyText="No tools yet."
+          />
+        );
+      })}
     </div>
   );
 }
