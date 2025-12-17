@@ -43,20 +43,28 @@ export interface BraceletMaterial extends BaseMaterial {
 
 export type Material = YarnMaterial | FabricMaterial | BraceletMaterial;
 
+export type ToolCategoryId =
+  | "crochet"
+  | "knitting"
+  | "sewing"
+  | "embroidery"
+  | "painting"
+  | "soldering";
 
 export interface Tool {
-    id: ID;
-    name: string;
-    type: string;
-    dateAcquired: string;
-    imageUrl?: string;
+  id: ID;
+  name: string;
+  categoryId: ToolCategoryId;
+  dateBought?: string;
+  notes?: string;
+  imageUrl?: string;
 }
 
-export interface CrochetHook extends Tool {
-    size: string;
-}
-
-export interface KnittingNeedle extends Tool {
-    size: string;
-    length: string;
-}
+export const TOOL_CATEGORIES: { id: ToolCategoryId; label: string }[] = [
+  { id: "crochet", label: "Crochet" },
+  { id: "knitting", label: "Knitting" },
+  { id: "sewing", label: "Sewing" },
+  { id: "embroidery", label: "Embroidery" },
+  { id: "painting", label: "Painting" },
+  { id: "soldering", label: "Soldering" },
+];
