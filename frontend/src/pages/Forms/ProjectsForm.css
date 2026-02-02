@@ -1,0 +1,54 @@
+.projectform {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 12px;
+  background: white;
+}
+
+.projectform__row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.projectform__label {
+  font-size: 14px;
+  color: #333;
+}
+
+.projectform__input,
+.projectform__textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+  font-size: 14px;
+}
+
+.projectform__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.projectform__btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 0;
+  background: #974EC1;
+  color: white;
+  cursor: pointer;
+}
+
+.projectform__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.projectform__btn--ghost {
+  background: transparent;
+  color: #974EC1;
+  border: 1px solid rgba(151, 78, 193, 0.5);
+}
