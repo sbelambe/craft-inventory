@@ -1,10 +1,11 @@
 import "../styles/global.css";
 import ProjectCard from "../components/cards/ProjectCard";
-import type { Project, Yarn, Tool, CrochetHook } from "../types";
+import type { Project, YarnMaterial, Tool } from "../types";
 
 export default function Projects() {
-  const sampleMaterial1: Yarn = {
+  const sampleMaterial1: YarnMaterial = {
     id: "m1",
+    type: "yarn",
     name: "Red Yarn",
     quantity: 2,
     cost: 10,
@@ -15,26 +16,28 @@ export default function Projects() {
     weight: "DK",
   };
 
-    const sampleMaterial2: Yarn = {
-    id: "m1",
+  const sampleMaterial2: YarnMaterial = {
+    id: "m2",
+    type: "yarn",
     name: "Blue Yarn",
     quantity: 2,
     cost: 10,
     dateBought: "2024-01-15",
-    color: "Red",
+    color: "Blue",
     yards: 200,
     fiber: "Wool",
     weight: "DK",
   };
-  const sampleTool: CrochetHook = {
+
+  const sampleTool: Tool = {
     id: "t1",
     name: "Knitting Needles",
-    type: "Needles",
-    dateAcquired: "2023-12-10",
-    size: "US 8",
+    categoryId: "knitting",
+    dateBought: "2023-12-10",
   };
+
   const sampleProject: Project = {
-    id: "1",
+    id: "p1",
     title: "Sample Project",
     percentComplete: 50,
     materialsUsed: [sampleMaterial1, sampleMaterial2, sampleMaterial1, sampleMaterial1],
