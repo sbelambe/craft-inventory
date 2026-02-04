@@ -1,4 +1,4 @@
-.projectform {
+.form {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -8,32 +8,33 @@
   background: white;
 }
 
-.projectform__row {
+.form__row {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.projectform__label {
+.form__label {
   font-size: 14px;
   color: #333;
 }
 
-.projectform__input,
-.projectform__textarea {
+.form__input,
+.form__textarea,
+.form__select {
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   font-size: 14px;
 }
 
-.projectform__actions {
+.form__actions {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.projectform__btn {
+.form__btn {
   padding: 10px 14px;
   border-radius: 12px;
   border: 0;
@@ -42,12 +43,12 @@
   cursor: pointer;
 }
 
-.projectform__btn:disabled {
+.form__btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.projectform__btn--ghost {
+.form__btn--ghost {
   background: transparent;
   color: #974EC1;
   border: 1px solid rgba(151, 78, 193, 0.5);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Project } from "../../types";
-import "./ProjectForm.css";
+import "./Form.css";
 
 type Props = {
   onCreate: (project: Project) => void;
@@ -29,34 +29,33 @@ export default function ProjectForm({ onCreate, onCancel }: Props) {
 
     onCreate(newProject);
 
-    // reset form after submit
     setTitle("");
     setPercentComplete(0);
     setNotes("");
   }
 
   return (
-    <form className="projectform" onSubmit={handleSubmit}>
-      <div className="projectform__row">
-        <label className="projectform__label" htmlFor="title">
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="form__row">
+        <label className="form__label" htmlFor="title">
           Project title
         </label>
         <input
           id="title"
-          className="projectform__input"
+          className="form__input"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="e.g., Granny square bag"
         />
       </div>
 
-      <div className="projectform__row">
-        <label className="projectform__label" htmlFor="percent">
+      <div className="form__row">
+        <label className="form__label" htmlFor="percent">
           Percent complete
         </label>
         <input
           id="percent"
-          className="projectform__input"
+          className="form__input"
           type="number"
           min={0}
           max={100}
@@ -65,13 +64,13 @@ export default function ProjectForm({ onCreate, onCancel }: Props) {
         />
       </div>
 
-      <div className="projectform__row">
-        <label className="projectform__label" htmlFor="notes">
+      <div className="form__row">
+        <label className="form__label" htmlFor="notes">
           Notes
         </label>
         <textarea
           id="notes"
-          className="projectform__textarea"
+          className="form__textarea"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Any notes, links, pattern info, etc."
@@ -79,18 +78,18 @@ export default function ProjectForm({ onCreate, onCancel }: Props) {
         />
       </div>
 
-      <div className="projectform__actions">
+      <div className="form__actions">
         {onCancel && (
-          <button type="button" className="projectform__btn projectform__btn--ghost" onClick={onCancel}>
+          <button
+            type="button"
+            className="form__btn form__btn--ghost"
+            onClick={onCancel}
+          >
             Cancel
           </button>
         )}
 
-        <button
-          type="submit"
-          className="projectform__btn"
-          disabled={!canSubmit}
-        >
+        <button type="submit" className="form__btn" disabled={!canSubmit}>
           Add Project
         </button>
       </div>
