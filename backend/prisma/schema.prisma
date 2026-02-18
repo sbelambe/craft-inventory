@@ -1,14 +1,106 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MaterialType {
+  yarn
+  fabric
+  bracelet
+}
+
+enum ToolCategoryId {
+  crochet
+  knitting
+  sewing
+  embroidery
+  painting
+  soldering
+}
+
+model Project {
+  id              String            @id @default(uuid())
+  title           String
+  percentComplete Int               @default(0)
+  notes           String            @default("")
+  imageUrl        String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  materials        ProjectMaterial[]
+  tools            ProjectTool[]
+}
+
+model Material {
+  id        String       @id @default(uuid())
+  type      MaterialType
+  name      String
+  quantity  Int
+  cost      Float
+  dateBought DateTime
+  imageUrl  String?
+
+  // Yarn fields
+  color     String?
+  yards     Int?
+  fiber     String?
+  weight    String?
+
+  // Fabric fields
+  fabricType String?
+  pattern    String?
+
+  // Bracelet fields 
+  materialType String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects ProjectMaterial[]
+}
+
+model Tool {
+  id          String          @id @default(uuid())
+  name        String
+  categoryId  ToolCategoryId
+  dateBought  DateTime?
+  notes       String?
+  imageUrl    String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  projects ProjectTool[]
+}
+
+/**
+ * Join table: a Project can use many Materials, and a Material can be used by many Projects
+ */
+model ProjectMaterial {
+  projectId  String
+  materialId String
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  material Material @relation(fields: [materialId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, materialId])
+  @@index([materialId])
+}
+
+/**
+ * Join table: a Project can use many Tools, and a Tool can be used by many Projects
+ */
+model ProjectTool {
+  projectId String
+  toolId    String
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tool    Tool    @relation(fields: [toolId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, toolId])
+  @@index([toolId])
 }
